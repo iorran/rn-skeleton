@@ -6,8 +6,8 @@ import CodePush from 'react-native-code-push';
 import OneSignal from 'react-native-onesignal';
 
 import theme from '~/styles/themes/dark';
-import Background from '~/components/Background';
-import Main from '~/pages/Main';
+import Background from '~/components/background';
+import Main from '~/pages/main';
 
 class App extends React.Component {
   constructor(props) {
@@ -52,4 +52,5 @@ class App extends React.Component {
 
 export default CodePush({
   checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME,
+  installMode: CodePush.InstallMode.ON_NEXT_RESUME,
 })(App);
