@@ -1,4 +1,6 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import { StatusBar } from 'react-native';
 import 'react-native-gesture-handler';
 
@@ -8,6 +10,16 @@ import OneSignal from 'react-native-onesignal';
 import theme from '~/styles/themes/dark';
 import Background from '~/components/background';
 import Main from '~/pages/main';
+
+// eslint-disable-next-line no-undef
+if (__DEV__) {
+  import('~/config/reactotron-config').then(() =>
+    console.log('Reactotron Configured')
+  );
+}
+
+// eslint-disable-next-line import/first
+import { store, persistor } from './store';
 
 class App extends React.Component {
   constructor(props) {
@@ -39,13 +51,17 @@ class App extends React.Component {
 
   render() {
     return (
-      <Background>
-        <StatusBar
-          barStyle="light-content"
-          backgroundColor={theme.primaryColor}
-        />
-        <Main />
-      </Background>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <Background>
+            <StatusBar
+              barStyle="light-content"
+              backgroundColor={theme.primaryColor}
+            />
+            <Main />
+          </Background>
+        </PersistGate>
+      </Provider>
     );
   }
 }
