@@ -7,7 +7,7 @@ import Button from '~/components/button';
 export default function Main() {
   return (
     <Container>
-      <Title> Olá VAKT</Title>
+      <Title> VAKT</Title>
       <Input icon="call" placeholder="Insert name" style={{ marginTop: 30 }} />
       <Button> test </Button>
     </Container>
