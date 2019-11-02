@@ -9,6 +9,11 @@ export const Title = styled.Text`
   margin-top: 30px;
 `;
 
+export const List = styled.FlatList.attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: { padding: 24 },
+})``;
+
 export const Container = styled.SafeAreaView`
   flex: 1;
 `;

@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, Title } from './styles';
 
-import Input from '~/components/input';
-import Button from '~/components/button';
+import { Container, Title, List } from './styles';
+import Trade from '~/components/trade';
 
 import { getTrades } from '~/store/modules/trade/actions';
 
@@ -15,15 +14,21 @@ export default function Main() {
     dispatch(getTrades());
   }, []);
 
-  function handleClick() {
-    dispatch(getTrades());
-  }
+  useEffect(() => {
+    console.tron.log('trades', trades[0].title);
+  }, []);
 
   return (
     <Container>
       <Title> VAKT</Title>
-      <Input icon="call" placeholder="Insert name" style={{ marginTop: 30 }} />
-      <Button onPress={handleClick}> test </Button>
+      {/* <Input icon="call" placeholder="Insert name" style={{ marginTop: 30 }} />
+      <Button onPress={handleClick}> test </Button> */}
+
+      <List
+        data={trades}
+        keyExtractor={item => String(item.title)}
+        renderItem={({ item }) => <Trade data={item} />}
+      />
     </Container>
   );
 }

@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import theme from '~/styles/themes/dark';
 
 export default styled(LinearGradient).attrs({
-  colors: [theme.primaryColor, theme.primaryLightColor],
+  colors: [theme.primaryDarkColor, theme.primaryColor],
 })`
   flex: 1;
 `;
