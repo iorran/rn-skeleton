@@ -7,10 +7,8 @@ import persistReducers from './persist-reducers';
 import rootReducer from './modules/root-reducer';
 import rootSaga from './modules/root-saga';
 
-import tron from '~/config/reactotron-config';
-
 // eslint-disable-next-line no-undef
-const sagaMonitor = __DEV__ ? tron.createSagaMonitor() : null;
+const sagaMonitor = __DEV__ ? console.tron.createSagaMonitor() : null;
 
 const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
