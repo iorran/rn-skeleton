@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Reactotron from 'reactotron-react-native';
 import { reactotronRedux } from 'reactotron-redux';
 import sagaPlugin from 'reactotron-redux-saga';
@@ -15,4 +16,11 @@ if (__DEV__) {
   tron.clear();
 
   console.tron = tron;
+
+  console.log = (title, data) =>
+    Reactotron.display({
+      name: title,
+      value: data,
+      preview: JSON.stringify(data),
+    });
 }

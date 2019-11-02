@@ -14,10 +14,6 @@ export default function Main() {
     dispatch(getTrades());
   }, []);
 
-  useEffect(() => {
-    console.tron.log('trades', trades[0].title);
-  }, []);
-
   return (
     <Container>
       <Title> VAKT</Title>
@@ -26,7 +22,7 @@ export default function Main() {
 
       <List
         data={trades}
-        keyExtractor={item => String(item.title)}
+        keyExtractor={item => String(item.etrmId)}
         renderItem={({ item }) => <Trade data={item} />}
       />
     </Container>
