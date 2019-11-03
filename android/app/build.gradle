@@ -164,13 +164,13 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
-            // buildConfigField "String", "CODEPUSH_KEY", '""'
-            resValue "string", "reactNativeCodePush_androidDeploymentKey", '"AoBdTD8VCbmuqzKYeQ3KfDfHCTaIMajnVxmAV"'
+            buildConfigField "String", "CODEPUSH_KEY", '""'
+            // resValue "string", "reactNativeCodePush_androidDeploymentKey", '"AoBdTD8VCbmuqzKYeQ3KfDfHCTaIMajnVxmAV"'
         }
 
         releaseStaging {
-            // buildConfigField "String", "CODEPUSH_KEY", '"AoBdTD8VCbmuqzKYeQ3KfDfHCTaIMajnVxmAV"'
-            resValue "string", "reactNativeCodePush_androidDeploymentKey", '"AoBdTD8VCbmuqzKYeQ3KfDfHCTaIMajnVxmAV"'
+            buildConfigField "String", "CODEPUSH_KEY", '"AoBdTD8VCbmuqzKYeQ3KfDfHCTaIMajnVxmAV"'
+            // resValue "string", "reactNativeCodePush_androidDeploymentKey", '"AoBdTD8VCbmuqzKYeQ3KfDfHCTaIMajnVxmAV"'
             matchingFallbacks = ['debug', 'release']
         }
 
@@ -180,8 +180,8 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            // buildConfigField "String", "CODEPUSH_KEY", '"tjoU1Bsw1vqkDvsGgFL1l_A2YF--71KEiPSuF"'
-            resValue "string", "reactNativeCodePush_androidDeploymentKey", '"tjoU1Bsw1vqkDvsGgFL1l_A2YF--71KEiPSuF"'
+            buildConfigField "String", "CODEPUSH_KEY", '"tjoU1Bsw1vqkDvsGgFL1l_A2YF--71KEiPSuF"'
+            // resValue "string", "reactNativeCodePush_androidDeploymentKey", '"tjoU1Bsw1vqkDvsGgFL1l_A2YF--71KEiPSuF"'
         }
     }
     // applicationVariants are e.g. debug, release
@@ -203,6 +203,7 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    compile project(':react-native-code-push')
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";

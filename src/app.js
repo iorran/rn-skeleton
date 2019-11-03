@@ -60,7 +60,8 @@ class App extends React.Component {
   }
 }
 
-export default CodePush({
+// eslint-disable-next-line no-class-assign
+export default App = CodePush({
   checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME,
   installMode: CodePush.InstallMode.ON_NEXT_RESUME,
 })(App);

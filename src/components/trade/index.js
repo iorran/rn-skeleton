@@ -9,7 +9,7 @@ import theme from '~/styles/themes/dark';
 
 export default function Trade({ data }) {
   function handleClick(param) {
-    Alert.alert(`Are you supposed to ${param}`);
+    Alert.alert(`You are supposed to ${param}.`);
   }
 
   return (
