@@ -16,7 +16,7 @@ export default function Trade({ data }) {
     <Container>
       <Left>
         <Info>
-          <Id>#{data.etrmId}</Id>
+          <Id>Oi #{data.etrmId}</Id>
           <CounterParty>
             {data.counterParty} - {data.product}
           </CounterParty>
