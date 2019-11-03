@@ -6,6 +6,7 @@ import '~/config/reactotron-config';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
+import CodePush from 'react-native-code-push';
 import OneSignal from 'react-native-onesignal';
 
 import theme from '~/styles/themes/dark';
@@ -14,7 +15,8 @@ import Main from '~/pages/main';
 
 import { store, persistor } from './store';
 
-export default class App extends React.Component {
+const codePushOptions = { checkFrequency: CodePush.CheckFrequency.MANUAL };
+class App extends React.Component {
   constructor(props) {
     super(props);
     OneSignal.init('387febd1-4394-45e3-ae3c-fad230cf9313');
@@ -28,19 +30,12 @@ export default class App extends React.Component {
     OneSignal.removeEventListener('received', this.onReceived);
     OneSignal.removeEventListener('opened', this.onOpened);
     OneSignal.removeEventListener('ids', this.onIds);
+
+    CodePush.sync({
+      updateDialog: true,
+      installMode: CodePush.InstallMode.IMMEDIATE,
+    });
   }
-
-  // onReceived = data => {
-  //   console.log('>: App -> data', data);
-  // };
-
-  // onOpened = notification => {
-  //   console.log('>: App -> notification', notification);
-  // };
-
-  // onIds = id => {
-  //   console.log('>: App -> id', id);
-  // };
 
   render() {
     return (
@@ -58,3 +53,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default CodePush(codePushOptions)(App);
