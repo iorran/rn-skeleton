@@ -9,14 +9,14 @@ import theme from '~/styles/themes/dark';
 
 export default function Trade({ data }) {
   function handleClick(param) {
-    Alert.alert(`You are supposed to ${param}. :)`);
+    Alert.alert(`You are supposed to ${param}.`);
   }
 
   return (
     <Container>
       <Left>
         <Info>
-          <Id>Oi #{data.etrmId}</Id>
+          <Id>#{data.etrmId}</Id>
           <CounterParty>
             {data.counterParty} - {data.product}
           </CounterParty>
