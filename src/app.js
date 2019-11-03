@@ -6,7 +6,6 @@ import '~/config/reactotron-config';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import CodePush from 'react-native-code-push';
 import OneSignal from 'react-native-onesignal';
 
 import theme from '~/styles/themes/dark';
@@ -15,7 +14,7 @@ import Main from '~/pages/main';
 
 import { store, persistor } from './store';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     OneSignal.init('387febd1-4394-45e3-ae3c-fad230cf9313');
@@ -59,9 +58,3 @@ class App extends React.Component {
     );
   }
 }
-
-// eslint-disable-next-line no-class-assign
-export default App = CodePush({
-  checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME,
-  installMode: CodePush.InstallMode.ON_NEXT_RESUME,
-})(App);
