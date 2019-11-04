@@ -1,30 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity, Alert } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { Container, Left, Right, Info, Id, CounterParty } from './styles';
 
 import theme from '~/styles/themes/dark';
 
-export default function Trade({ data }) {
-  function handleClick(param) {
-    Alert.alert(`You are supposed to ${param}.`);
-  }
-
+export default function Trade({ data, reject, accept }) {
   return (
     <Container>
       <Left>
         <Info>
           <Id>#{data.etrmId}</Id>
           <CounterParty>
-            {data.counterParty} - {data.product}
+            {data.counterParty} {data.product} {data.status}
           </CounterParty>
         </Info>
       </Left>
 
       <Right>
-        <TouchableOpacity onPress={() => handleClick('accept')}>
+        <TouchableOpacity onPress={accept}>
           <Icon
             name="thumbs-up"
             size={20}
@@ -33,7 +29,7 @@ export default function Trade({ data }) {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => handleClick('reject')}>
+        <TouchableOpacity onPress={reject}>
           <Icon
             name="thumbs-down"
             size={20}
@@ -51,5 +47,8 @@ Trade.propTypes = {
     etrmId: PropTypes.string.isRequired,
     product: PropTypes.string.isRequired,
     counterParty: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
   }).isRequired,
+  reject: PropTypes.func.isRequired,
+  accept: PropTypes.func.isRequired,
 };
